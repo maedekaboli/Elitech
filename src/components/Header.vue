@@ -109,11 +109,7 @@ export default {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 34px;
 }
-@media only screen and (min-width: 1025px) {
-  .header-banner {
-    width: 1120px;
-  }
-}
+
 .carousel-item {
   height: 576px;
   background: rgba(35, 31, 32, 0.48);
@@ -142,5 +138,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+@media only screen and (min-width: 1025px) {
+  .header-banner {
+    width: 1120px;
+  }
 }
 </style>

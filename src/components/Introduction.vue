@@ -63,24 +63,7 @@ export default {
   position: relative;
   z-index: 1;
 }
-@media only screen and (max-width: 320px) {
-  .video-js {
-    height: 154px;
-  }
-  .introduction {
-    padding: 24px 16px 24px 16px;
-  }
-  .introduction .title {
-    margin-top: 16px !important;
-    font-size: 18px !important;
-    line-height: 28px !important;
-  }
-  .introduction-content {
-    margin-top: 8px !important;
-    font-size: 14px !important;
-    margin-bottom: 0 !important;
-  }
-}
+
 .introduction .title {
   font-weight: 700;
   font-size: 24px;
@@ -102,5 +85,31 @@ export default {
   background-image: url("../assets/images/play.svg") !important;
   background-position: center;
   background-repeat: no-repeat;
+}
+@media only screen and (max-width: 320px) {
+  .vjs-play-control .vjs-icon-placeholder:before,
+  .video-js .vjs-big-play-button .vjs-icon-placeholder:before {
+    background-size: 40%;
+  }
+  .video-js .vjs-big-play-button {
+    width: 48px !important;
+    height: 48px !important;
+  }
+  .video-js {
+    height: 154px;
+  }
+  .introduction {
+    padding: 24px 16px 24px 16px;
+  }
+  .introduction .title {
+    margin-top: 16px !important;
+    font-size: 18px !important;
+    line-height: 28px !important;
+  }
+  .introduction-content {
+    margin-top: 8px !important;
+    font-size: 14px !important;
+    margin-bottom: 0 !important;
+  }
 }
 </style>

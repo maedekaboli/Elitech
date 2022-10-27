@@ -82,21 +82,7 @@
   margin-bottom: 18px;
   margin-top: 38px;
 }
-@media only screen and (min-width: 320px) {
-  .about {
-    padding: 24px 16px 36px 16px;
-  }
-  .card-header img {
-    width: 31px;
-  }
-  .card-header{
-    height: 59px;
-  }
-  .card-header span {
-    font-size: 18px;
-line-height: 28px;
-  }
-}
+
 .about .title {
   font-weight: 700;
   font-size: 24px;
@@ -109,5 +95,20 @@ line-height: 28px;
   line-height: 240%;
   margin-top: 24px;
   color: #676767;
+}
+@media only screen and (min-width: 320px) {
+  .about {
+    padding: 24px 16px 36px 16px;
+  }
+  .card-header img {
+    width: 31px;
+  }
+  .card-header {
+    height: 59px;
+  }
+  .card-header span {
+    font-size: 18px;
+    line-height: 28px;
+  }
 }
 </style>

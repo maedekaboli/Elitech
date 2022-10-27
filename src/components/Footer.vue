@@ -119,21 +119,7 @@ export default {
 .contact-us {
   flex-direction: column;
 }
-@media only screen and (min-width: 1025px) {
-  .contact-us {
-    padding-right: 160px;
-  }
-}
-@media only screen and (max-width: 320px) {
-  .footer {
-    padding-right: 22px;
-    padding-left: 22px;
-  }
-  .cooperation-request > form,
-  .submit-cooperate-btn {
-    width: 100% !important;
-  }
-}
+
 .contact-us > .title {
   font-weight: 700;
   font-size: 24px;
@@ -175,5 +161,20 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+@media only screen and (min-width: 1025px) {
+  .contact-us {
+    padding-right: 160px;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .footer {
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+  .cooperation-request > form,
+  .submit-cooperate-btn {
+    width: 100% !important;
+  }
 }
 </style>
