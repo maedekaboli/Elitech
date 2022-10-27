@@ -1,0 +1,146 @@
+<template>
+  <div class="d-flex justify-content-center">
+    <div
+      class="
+        header-banner
+        d-flex
+        justify-content-md-between justify-content-center
+        align-items-center
+      "
+    >
+      <img src="../assets/images/main-logo.svg" alt="logo" class="" />
+      <ul class="list-unstyled list-inline m-0 p-0 d-md-flex d-none">
+        <li
+          v-for="(item, index) in socials"
+          :key="index"
+          class="list-inline-item m-0"
+        >
+          <a :href="item.link" class="social-items">
+            <img :src="'./images/' + item.imgURL" />
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      id="carouselExampleCaptions"
+      class="carousel w-100 slide"
+      data-bs-interval="7000"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div
+          class="carousel-item active"
+          v-for="(item, index) in headerItems"
+          :key="index"
+        >
+          <img
+            :src="'./images/' + item.imgURL"
+            class="d-block w-100"
+            :alt="item.imgURL"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h2>{{ item.title }}</h2>
+            <p>{{ item.content }}</p>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</template>
+
+
+<script>
+export default {
+  name: "Footer",
+  data() {
+    return {
+      headerItems: [
+        {
+          title: "با الیتک همواره در حرکت باش",
+          content: "تهیه و توزیع لوازم یدکی خودرو های چینی در ایران",
+          imgURL: "chad.png",
+        },
+        {
+          title: "با الیتک همواره در حرکت باش",
+          content: "تهیه و توزیع لوازم یدکی خودرو های چینی در ایران",
+          imgURL: "chad.png",
+        },
+      ],
+      socials: [
+        { link: "", imgURL: "facebook-yellow.svg" },
+        { link: "", imgURL: "whatsapp-yellow.svg" },
+        { link: "", imgURL: "twitter-yellow.svg" },
+        { link: "", imgURL: "linkedin-yellow.svg" },
+      ],
+    };
+  },
+};
+</script>
+
+
+
+<style scoped>
+.header-banner {
+  padding: 0 32px 0 22px;
+  width: 90%;
+  height: 68px;
+  z-index: 1;
+  position: absolute;
+  top: 50px;
+  background: #dcddde;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 34px;
+}
+@media only screen and (min-width: 1025px) {
+  .header-banner {
+    width: 1120px;
+  }
+}
+.carousel-item {
+  height: 576px;
+  background: rgba(35, 31, 32, 0.48);
+}
+.carousel-caption h2 {
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 132%;
+  text-align: center;
+  color: #ffdd00;
+}
+.carousel-caption p {
+  margin-top: 32px;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 50px;
+  color: #dcddde;
+}
+
+.social-items {
+  width: 40px;
+  margin-left: 10px;
+  height: 40px;
+  background-color: #231f20;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>

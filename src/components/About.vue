@@ -19,9 +19,9 @@
         <div
           class="card-header d-flex justify-content-between align-items-center"
         >
-          <img src="../assets/garanti.png" alt="" />
+          <img src="../assets/images/garanti.svg" alt="" />
           <span> شرایط گارانتی</span>
-          <img src="../assets/garanti.png" alt="" />
+          <img src="../assets/images/garanti.svg" alt="" />
         </div>
         <div class="card-body">
           <div
@@ -29,9 +29,9 @@
             v-for="(item, index) in 8"
             :key="index"
           >
-            <img src="../assets/tick-square.png" alt="tick" />
+            <img src="../assets/images/tick-square.svg" alt="tick" />
             <span class="card-text">
-                اگر شما یک طراح هستین و یا با طراحی های گرافیکی سروکار دارید 
+              اگر شما یک طراح هستین و یا با طراحی های گرافیکی سروکار دارید
             </span>
           </div>
         </div>
@@ -71,16 +71,31 @@
   font-size: 16px;
   line-height: 240%;
 }
-.card-body img{
-    width: 20px;
-    height: 20px;
-    margin-bottom: 3px;
+.card-body img {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 3px;
 }
 .about {
   padding: 48px 71px 55px 71px;
   border-radius: 0 0 34px 34px;
   margin-bottom: 18px;
   margin-top: 38px;
+}
+@media only screen and (min-width: 320px) {
+  .about {
+    padding: 24px 16px 36px 16px;
+  }
+  .card-header img {
+    width: 31px;
+  }
+  .card-header{
+    height: 59px;
+  }
+  .card-header span {
+    font-size: 18px;
+line-height: 28px;
+  }
 }
 .about .title {
   font-weight: 700;
