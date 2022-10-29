@@ -34,6 +34,9 @@ export default {
 </script> 
 
 <style>
+.video-js .vjs-modal-dialog {
+  border-radius: 16px;
+}
 .vjs-poster {
   background-size: cover;
   border-radius: 16px;
@@ -86,7 +89,7 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
 }
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 426px) {
   .vjs-play-control .vjs-icon-placeholder:before,
   .video-js .vjs-big-play-button .vjs-icon-placeholder:before {
     background-size: 40%;
@@ -99,7 +102,9 @@ export default {
     height: 154px;
   }
   .introduction {
-    padding: 24px 16px 24px 16px;
+    padding: 16px 16px 24px 16px;
+    margin-top: -38px;
+    border-radius: 16px 16px 0 0;
   }
   .introduction .title {
     margin-top: 16px !important;

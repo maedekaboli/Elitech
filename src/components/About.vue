@@ -25,7 +25,7 @@
         </div>
         <div class="card-body">
           <div
-            class="d-flex align-items-center"
+            class="d-flex align-items-baseline"
             v-for="(item, index) in 8"
             :key="index"
           >
@@ -61,7 +61,7 @@
 .card-body {
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-gap: 16px;
+  gap: 16px;
   padding: 32px 46px 30px 46px;
 }
 
@@ -74,7 +74,8 @@
 .card-body img {
   width: 20px;
   height: 20px;
-  margin-bottom: 3px;
+  top: 6px;
+  position: relative;
 }
 .about {
   padding: 48px 71px 55px 71px;
@@ -96,9 +97,29 @@
   margin-top: 24px;
   color: #676767;
 }
-@media only screen and (min-width: 320px) {
+@media only screen and (max-width: 426px) {
   .about {
     padding: 24px 16px 36px 16px;
+  }
+  .about .title {
+    margin-top: 16px !important;
+    font-size: 18px !important;
+    line-height: 28px !important;
+  }
+  .about-content {
+    margin-top: 8px !important;
+    font-size: 14px !important;
+    margin-bottom: 24 !important;
+  }
+  .card-body {
+    grid-template-columns: unset;
+    gap: 12px;
+    padding: 18px 15px 21px 12px;
+  }
+  .card-text {
+    font-size: 12px;
+    line-height: 19px;
+    margin-right: 8px;
   }
   .card-header img {
     width: 31px;

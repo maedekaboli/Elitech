@@ -13,7 +13,7 @@
         >
           <span class="title">تماس با ما</span>
           <div
-            class="d-flex align-items-center contact-info"
+            class="d-flex align-items-baseline contact-info"
             v-for="(item, index) in contactInfo"
             :key="index"
           >
@@ -37,7 +37,7 @@
             col-xs-12 col-lg-4 col-md-5
             order-md-2 order-1
             cooperation-request
-            mb-5 mb-md-0
+            mb-4 mb-md-0
           "
         >
           <span class="text-white d-flex title">درخواست همکاری</span>
@@ -112,6 +112,16 @@ export default {
   border-top: 7px solid #ffdd00;
   padding: 54px 0;
 }
+.contact-info p {
+  text-align: right;
+}
+.contact-info img {
+  width: 20px;
+  position: relative;
+  top: 5px;
+  left: 5px;
+  height: 20px;
+}
 .contact-info {
   margin-bottom: 34px;
   color: #cbcbcb;
@@ -169,8 +179,7 @@ export default {
 }
 @media only screen and (max-width: 320px) {
   .footer {
-    padding-right: 22px;
-    padding-left: 22px;
+    padding: 20px 12px 32px 12px;
   }
   .cooperation-request > form,
   .submit-cooperate-btn {

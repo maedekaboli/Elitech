@@ -24,7 +24,7 @@
     <div
       id="carouselExampleCaptions"
       class="carousel w-100 slide"
-      data-bs-interval="7000"
+      data-bs-interval="7000000"
       data-bs-ride="carousel"
     >
       <div class="carousel-inner">
@@ -38,7 +38,7 @@
             class="d-block w-100"
             :alt="item.imgURL"
           />
-          <div class="carousel-caption d-none d-md-block">
+          <div class="carousel-caption">
             <h2>{{ item.title }}</h2>
             <p>{{ item.content }}</p>
           </div>
@@ -98,6 +98,7 @@ export default {
 
 
 <style scoped>
+
 .header-banner {
   padding: 0 32px 0 22px;
   width: 90%;
@@ -109,10 +110,27 @@ export default {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 34px;
 }
-
+.carousel-control-prev-icon {
+  background-image: url("../assets/images/arrow.svg") !important;
+}
+.carousel-control-next,
+.carousel-control-prev {
+  opacity: 1 !important;
+}
+.carousel-control-next-icon {
+  background-image: url("../assets/images/arrow.svg") !important;
+  rotate: 180deg;
+}
 .carousel-item {
   height: 576px;
   background: rgba(35, 31, 32, 0.48);
+}
+
+.carousel-item img {
+  height: inherit;
+}
+.carousel-caption {
+  bottom: 240px;
 }
 .carousel-caption h2 {
   font-weight: 900;
@@ -122,7 +140,7 @@ export default {
   color: #ffdd00;
 }
 .carousel-caption p {
-  margin-top: 32px;
+  margin-top: 26px;
   font-weight: 700;
   font-size: 32px;
   line-height: 50px;
@@ -139,9 +157,42 @@ export default {
   align-items: center;
   justify-content: center;
 }
+.carousel {
+  direction: ltr !important;
+}
 @media only screen and (min-width: 1025px) {
   .header-banner {
     width: 1120px;
+  }
+}
+@media only screen and (max-width: 426px) {
+  .carousel-control-next-icon,
+  .carousel-control-prev-icon {
+    height: 16px;
+  }
+  .carousel-caption {
+    bottom: 0;
+  }
+  .carousel-caption h2 {
+    font-size: 24px;
+    line-height: 132%;
+  }
+
+  .carousel-caption p {
+    font-size: 14px;
+    line-height: 22px;
+    margin-top: 0;
+  }
+  .carousel-item {
+    height: 236px;
+  }
+  .header-banner {
+    height: 48px;
+    top: 24px;
+  }
+  .header-banner img {
+    width: 102px;
+    height: 24px;
   }
 }
 </style>
