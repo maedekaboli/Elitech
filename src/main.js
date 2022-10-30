@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
 import "../src/assets/font/stylesheet.css"
 import MasonryWall from '@yeger/vue-masonry-wall'
-import router from "@/router";
+import router from "./router";
 import vSelect from "vue-select";
 import "vue-select/dist/vue-select.css";
 
