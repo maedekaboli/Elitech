@@ -17,7 +17,7 @@ const routes = [
     {
         path: '/form', component: Forms
         ,children: [
-            {path: '/form', component: FormContainer}
+            {path: '/', component: FormContainer}
         ]
     }
 ]
