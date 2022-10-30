@@ -15,7 +15,7 @@
             class="bg-white"
             :options="provinces"
             placeholder="استان"
-            @input="setSelected"
+            v-model="provincesValue"
           ></v-select>
         </div>
         <div class="col-4 mb-3 pb-3">
@@ -128,7 +128,9 @@
       </div>
     </div>
   </div>
-  <button type="button" class="btn btn-primary w-50">ثبت و ادامه</button>
+  <button type="button" class="btn btn-primary w-50" @click="submitForm">
+    ثبت و ادامه
+  </button>
 </template>
 
 
@@ -143,6 +145,7 @@ export default {
   props: ["provinces", "cities"],
   data() {
     return {
+      provincesValue: { code: 8, label: "تهران" },
       form: {
         name: null,
         mobile: null,
@@ -161,8 +164,8 @@ export default {
     };
   },
   methods: {
-    setSelected(value) {
-      console.log(value);
+    submitForm() {
+      this.$emit("submitForm", {city:this.provincesValue.code});
     },
   },
 };

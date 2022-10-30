@@ -7,13 +7,15 @@
           <input
             class="form-control"
             type="text"
+            v-model="form.name"
             placeholder=" نام و کد نمایندگی"
           />
         </div>
         <div class="col-8 mb-3 pb-3">
-          <input class="form-control mb-5" type="text" placeholder="آدرس" />
+          <input v-model="form.address" class="form-control mb-5" type="text" placeholder="آدرس" />
           <textarea
             placeholder="توضیحات"
+            v-model="form.comment"
             class="form-control"
             id="visitorComment"
             rows="4"
@@ -29,6 +31,7 @@
               v-for="(item, index) in yesOrNo"
               :key="index"
               class="form-check col-auto"
+              @click="changeItem(item)"
             >
               <label class="form-check-label" :for="`repre${item.id}`">
                 {{ item.label }}
@@ -46,21 +49,31 @@
       </div>
     </div>
   </div>
-  <button type="button" class="btn btn-primary w-50">ثبت و ادامه</button>
+  <button type="button" class="btn btn-primary w-50" @click="submitForm">ثبت و ادامه</button>
 </template>
 
 
 <script>
 export default {
   name: "Representation",
+  props: ["data"],
 
   data() {
     return {
+      form: this.data,
       yesOrNo: [
         { id: 1, value: false, label: "دارد" },
         { id: 0, value: false, label: "ندارد" },
       ],
     };
+  },
+  methods: {
+    changeItem(item){
+      this.form.cooperateWiiling=item.id
+    },
+    submitForm() {
+      this.$emit("submitForm",this.form);
+    },
   },
 };
 </script>

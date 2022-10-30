@@ -24,10 +24,11 @@
 <script>
 export default {
   name: "RegularVisitor",
+  props:['comment'],
   data() {
     return {
       form: {
-        comment: "",
+        comment: this.comment,
       },
     };
   },
