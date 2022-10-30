@@ -1,6 +1,6 @@
 <template>
   <div class="container gallery">
-    <div class="d-md-block d-none">
+    <div class="d-md-block d-none mx-lg-5 mx-0 px-lg-4 px-0">
       <MasonryWall
         :items="galleryImages1"
         :ssr-columns="1"
@@ -10,7 +10,10 @@
         <template #default="{ item, index }">
           <div
             :style="{ height: item.height }"
-            class="mb-4 gallery-item flex items-center justify-center"
+            :class="[
+              'mb-4 gallery-item flex items-center justify-center',
+              index != 0 ? 'bg-white img-custom' : '',
+            ]"
           >
             <div
               class="gallery-title text-end position-relative"
@@ -62,7 +65,11 @@
               v-for="(item, index) in galleryImages"
               :key="index"
             >
-              <img :src="item.url" class="d-block" :alt="item.url" />
+              <img
+                :src="item.url"
+                class="d-block carousel-img"
+                :alt="item.url"
+              />
               <div class="d-flex align-items-end justify-content-end mt-2">
                 <span class="title">{{ item.title }}</span>
                 <img
@@ -120,66 +127,60 @@ export default defineComponent({
           height: 207,
         },
         {
-          title: "عنوان تصویر",
-          url: "./images/1.png",
+          title: "مجموعه دسته موتورها",
+          url: "./images/01-min.png",
           height: 207,
         },
         {
-          title: "عنوان تصویر",
-          url: "./images/2.png",
+          title: "مجموعه قطعات جلوبندی",
+          url: "./images/02-min.png",
           height: 384,
         },
         {
-          title: "عنوان تصویر",
-          url: "./images/3.png",
+          title: "مجموعه تسمه ها و سفت کن ها",
+          url: "./images/03-min.png",
           height: 271,
         },
         {
-          title: "عنوان تصویر",
-          url: "./images/4.png",
+          title: "سیستم ترمز ها",
+          url: "./images/04-min.png",
           height: 384,
         },
         {
-          title: " عنوان تصویر",
-          url: "./images/5.png",
+          title: "مجموعه قطعات برقی و سنسور ها",
+          url: "./images/05-min.png",
           height: 271,
         },
         {
-          title: "عنوان تصویر",
-          url: "./images/6.png",
+          title: "مجموعه قطعات موتوری",
+          url: "./images/06-min.png",
           height: 207,
         },
       ],
       galleryImages: [
         {
-          title: "عنوان تصویر",
-          url: "./images/1.png",
-          height: 207,
+          title: "مجموعه دسته موتورها",
+          url: "./images/01-min.png",
         },
         {
-          title: "عنوان تصویر",
-          url: "./images/2.png",
-          height: 384,
+          title: "مجموعه قطعات جلوبندی",
+          url: "./images/02-min.png",
         },
         {
-          title: "عنوان تصویر",
-          url: "./images/3.png",
-          height: 271,
+          title: "مجموعه تسمه ها و سفت کن ها",
+          url: "./images/03-min.png",
         },
         {
-          title: "عنوان تصویر",
-          url: "./images/4.png",
-          height: 384,
+          title: "سیستم ترمز ها",
+          url: "./images/04-min.png",
         },
         {
-          title: " عنوان تصویر",
-          url: "./images/5.png",
-          height: 271,
+          title: "مجموعه قطعات برقی و سنسور ها",
+          url: "./images/05-min.png",
         },
         {
-          title: "عنوان تصویر",
-          url: "./images/6.png",
-          height: 207,
+          title: "مجموعه قطعات موتوری",
+          url: "./images/06-min.png",
         },
       ],
     };
@@ -198,6 +199,10 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.carousel-img {
+  border: 2px solid #ffdd00;
+  background-color: white;
+}
 .carousel-item {
   text-align: -webkit-center;
 }
@@ -238,6 +243,9 @@ export default defineComponent({
   margin-top: 48px;
   margin-bottom: 38px;
 }
+.img-custom {
+  border: 2px solid #ffdd00;
+}
 .masonry-item img,
 .gallery-item {
   border-radius: 16px !important;
@@ -249,7 +257,7 @@ export default defineComponent({
   direction: ltr;
 }
 .carousel-item img {
-  width: 98%;
+  width: 96%;
   height: 207px;
   border-radius: 16px;
 }

@@ -90,10 +90,14 @@ export default {
       contactInfo: [
         {
           icon: "location.svg",
-          info: "تهران-خیابان آزادی-خیابان جمالزاده شمالی-کوچه بزمه-پلاک 10",
+          info: "آدرس فروشگاه مرکزی: تهران، خیابان ملت تقاطع اکباتان پلاک 133",
         },
-        { icon: "call-calling.svg", info: "021-44444444" },
-        { icon: "sms.svg", info: "info@elitechpart.com" },
+        {
+          icon: "location.svg",
+          info: "آدرس دفتر مرکزی: تهران، سهروردی، خیابان کاووسی فر پلاک 59 واحد 1",
+        },
+        { icon: "call-calling.svg", info: "021-33988000" },
+        { icon: "sms.svg", info: "sales@elitechpart.com" },
       ],
       socials: [
         { link: "", imgURL: "facebook-black.svg" },

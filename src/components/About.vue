@@ -1,20 +1,17 @@
 <template>
   <div class="container">
     <div class="bg-white text-end about">
-      <span class="title">درباره ما</span>
-      <p class="about-content">
-        اگر شما یک طراح هستین و یا با طراحی های گرافیکی سروکار دارید به متن های
-        برخورده اید که با نام لورم ایپسوم شناخته می‌شوند. لورم ایپسوم یا طرح‌نما
-        (به انگلیسی: Lorem ipsum) متنی ساختگی و بدون معنی است که برای امتحان
-        فونت و یا پر کردن فضا در یک طراحی گرافیکی و یا صنعت چاپ استفاده میشود.
-        طراحان وب و گرافیک از این متن برای پرکردن صفحه و ارائه شکل کلی طرح
-        استفاده می‌کنند.اگر شما یک طراح هستین و یا با طراحی های گرافیکی سروکار
-        دارید به متن های برخورده اید که با نام لورم ایپسوم شناخته می‌شوند. لورم
-        ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) متنی ساختگی و بدون معنی است
-        که برای امتحان فونت و یا پر کردن فضا در یک طراحی گرافیکی و یا صنعت چاپ
-        استفاده میشود. طراحان وب و گرافیک از این متن برای پرکردن صفحه و ارائه
-        شکل کلی طرح استفاده می‌کنند.
-      </p>
+      <span class="title">سبد محصولات ما</span>
+      <div class="products">
+        <div
+          class="d-flex align-items-baseline"
+          v-for="(item, index) in products"
+          :key="index"
+        >
+          <img src="../assets/images/tick-square.svg" alt="tick" />
+          <span class="card-text"> {{ item }} </span>
+        </div>
+      </div>
       <div class="card">
         <div
           class="card-header d-flex justify-content-between align-items-center"
@@ -24,25 +21,47 @@
           <img src="../assets/images/garanti.svg" alt="" />
         </div>
         <div class="card-body">
-          <div
-            class="d-flex align-items-baseline"
-            v-for="(item, index) in 8"
-            :key="index"
-          >
-            <img src="../assets/images/tick-square.svg" alt="tick" />
-            <span class="card-text">
-              اگر شما یک طراح هستین و یا با طراحی های گرافیکی سروکار دارید
-            </span>
-          </div>
+          <p>
+            گروه الیتک با هدف جلب رضایت مشتریان خود ، کلیه قطعات با برند الیتک
+            را با شرایط و ضوابط مختص هر قطعه گارانتی می نماید .
+          </p>
+          <p>
+            مشتریان محترم الیتک با ارسال پیامک سریال نامبر مندرج بر روی بسته
+            بندی قطعات الیتک قادر به فعالسازی گارانتی قطعات خود می باشند.
+          </p>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-
+<script>
+export default {
+  name: "Footer",
+  data() {
+    return {
+      products: [
+        "قطعات موتوری",
+        "سیستم تعلیق / فرمان/ چرخ و اکسل",
+        "سیستم ترمز",
+        "خنک کننده / بخاری و متعلقات",
+        "برقی و چراغ ها",
+        "بدنه و اسکلت",
+        "سیستم ایمنی و ایربگ",
+        "برای کلیه خودروهای چینی : MVM-GEELY-JAC-CHERY  و .....",
+      ],
+    };
+  },
+};
+</script>
 
 <style scoped>
+.products {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 16px;
+  margin-bottom: 48px;
+}
 .card {
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
@@ -59,9 +78,6 @@
   line-height: 50px;
 }
 .card-body {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  gap: 16px;
   padding: 32px 46px 30px 46px;
 }
 
@@ -89,14 +105,6 @@
   font-size: 24px;
   line-height: 37px;
 }
-.about-content {
-  margin-bottom: 48px;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 240%;
-  margin-top: 24px;
-  color: #676767;
-}
 @media only screen and (max-width: 426px) {
   .about {
     padding: 24px 16px 36px 16px;
@@ -106,11 +114,7 @@
     font-size: 18px !important;
     line-height: 28px !important;
   }
-  .about-content {
-    margin-top: 8px !important;
-    font-size: 14px !important;
-    margin-bottom: 24 !important;
-  }
+
   .card-body {
     grid-template-columns: unset;
     gap: 12px;
