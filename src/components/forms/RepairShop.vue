@@ -4,7 +4,12 @@
       <label class="form-label d-block text-end"> تعمیرگاه :</label>
       <div class="d-flex row">
         <div class="col-4 mb-3 pb-3">
-          <input v-model="form.name" class="form-control" type="text" placeholder="نام تعمیرگاه" />
+          <input
+            v-model="form.name"
+            class="form-control"
+            type="text"
+            placeholder="نام تعمیرگاه"
+          />
         </div>
         <div class="col-4 mb-3 pb-3">
           <input
@@ -49,8 +54,9 @@
               <input
                 class="form-check-input"
                 type="checkbox"
-                :value="item.value"
+                :value="item"
                 :id="`repair${item.value}`"
+                v-model="checkedProducts"
               />
             </div>
           </div>
@@ -93,7 +99,7 @@
               v-for="(item, index) in yesOrNo"
               :key="index"
               class="form-check col-auto"
-              @click="changeItem(item, 'cooperateWilling')"              
+              @click="changeItem(item, 'cooperateWilling')"
             >
               <label
                 class="form-check-label"
@@ -142,7 +148,9 @@
       </div>
     </div>
   </div>
-  <button type="button" class="btn btn-primary w-50" @click="submitForm">ثبت و ادامه</button>
+  <button type="button" class="btn btn-primary w-50" @click="submitForm">
+    ثبت و ادامه
+  </button>
 </template>
 
 
@@ -162,14 +170,15 @@ export default {
       form: this.data,
       cityValue: null,
       sparePartType: [
-        { value: 1, label: "چینی" },
-        { value: 2, label: "ایرانی" },
-        { value: 3, label: "سایر" },
+        { value: 1, label: "چینی", checked: false },
+        { value: 2, label: "ایرانی", checked: false },
+        { value: 3, label: "سایر", checked: false },
       ],
       yesOrNo: [
         { id: 1, value: false, label: "دارد" },
         { id: 0, value: false, label: "ندارد" },
       ],
+      checkedProducts: [],
     };
   },
   methods: {
@@ -187,6 +196,7 @@ export default {
       }
     },
     submitForm() {
+       this.checkedProducts.forEach(i=>this.form.partType.push(i.value));
       this.form.provinces = this.provincesValue?.code;
       this.form.city = this.cityValue?.code;
       this.$emit("submitForm", this.form);

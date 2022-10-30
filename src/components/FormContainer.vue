@@ -172,7 +172,7 @@ export default {
           cooperateHistory: null,
           cooperateWiiling: null,
           orderWilling: null,
-          partType: null,
+          partType: [],
           address: null,
         },
       },
@@ -185,7 +185,12 @@ export default {
       this.form.author = this.selectedAuthor.label;
       this.form.type = this.active.value;
       console.log("form", this.form);
-      api.post("form", this.form).then((res) => console.log("res", res));
+      api.post("form", this.form).then(() => {
+      this.changeActivetab({ id: 1, value: "normal", label: "عادی" })
+      this.form.name=null;
+      this.form.mobile=null
+      }
+      );
     },
     changeActivetab(item) {
       this.form.data = {
@@ -201,7 +206,7 @@ export default {
         cooperateHistory: null,
         cooperateWiiling: null,
         orderWilling: null,
-        partType: null,
+        partType: [],
         address: null,
       };
       this.active = item;
