@@ -8,6 +8,7 @@
         align-items-center
       "
     >
+    <router-link to="/form" tag="button" class="btn btn-primary">فرم ها</router-link>
       <img src="../assets/images/main-logo.svg" alt="logo" class="" />
       <ul class="list-unstyled list-inline m-0 p-0 d-md-flex d-none">
         <li
