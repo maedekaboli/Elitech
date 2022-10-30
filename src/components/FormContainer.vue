@@ -97,6 +97,7 @@
           v-if="active.id == 5"
           :provinces="provinces"
           :cities="cities"
+          :data="form.data"
           @submitForm="submitForm"
         ></Supplier>
 
@@ -144,8 +145,8 @@ export default {
         { id: 2, value: "consumer", label: "مصرف کننده" },
         { id: 3, value: "shop", label: "فروشگاه لوازم یدکی" },
         { id: 4, value: "repair", label: "تعمیر گاه" },
-        { id: 5, value: "representation", label: "تولید کننده / تامین کننده " },
-        { id: 6, value: "supplier", label: "نمایندگی" },
+        { id: 5, value: "supplier", label: "تولید کننده / تامین کننده " },
+        { id: 6, value: "representation", label: "نمایندگی" },
       ],
       form: {
         name: null,
