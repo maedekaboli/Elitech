@@ -75,7 +75,9 @@
 
         <Consumer
           v-if="active.id == 2"
-          :provinces="provinces"
+          :cities="cities"
+          :carModels="carModels"
+          :data="form.data"
           @submitForm="submitForm"
         ></Consumer>
 
@@ -83,6 +85,7 @@
           v-if="active.id == 3"
           :provinces="provinces"
           :cities="cities"
+          :data="form.data"
           @submitForm="submitForm"
         ></SparePartStore>
 
@@ -90,6 +93,7 @@
           v-if="active.id == 4"
           :provinces="provinces"
           :cities="cities"
+          :data="form.data"
           @submitForm="submitForm"
         ></RepairShop>
 
@@ -140,6 +144,7 @@ export default {
       authors: [],
       provinces: [],
       cities: [],
+      carModels: [],
       visitorTypes: [
         { id: 1, value: "normal", label: "عادی" },
         { id: 2, value: "consumer", label: "مصرف کننده" },
@@ -164,7 +169,7 @@ export default {
           name: null,
           phone: null,
           sparePart: null,
-          cocperateHistory: null,
+          cooperateHistory: null,
           cooperateWiiling: null,
           orderWilling: null,
           partType: null,
@@ -193,13 +198,12 @@ export default {
         name: null,
         phone: null,
         sparePart: null,
-        cocperateHistory: null,
+        cooperateHistory: null,
         cooperateWiiling: null,
         orderWilling: null,
         partType: null,
         address: null,
       };
-      console.log(this.form)
       this.active = item;
     },
   },
@@ -213,6 +217,9 @@ export default {
       );
       res?.data?.data?.authors.forEach((item) =>
         this.authors.push({ label: item.name, code: item.id })
+      );
+      res?.data?.data?.models.forEach((item) =>
+        this.carModels.push({ label: item.name, code: item.id })
       );
     });
   },

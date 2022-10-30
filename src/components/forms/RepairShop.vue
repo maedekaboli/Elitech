@@ -4,12 +4,13 @@
       <label class="form-label d-block text-end"> تعمیرگاه :</label>
       <div class="d-flex row">
         <div class="col-4 mb-3 pb-3">
-          <input class="form-control" type="text" placeholder="نام تعمیرگاه" />
+          <input v-model="form.name" class="form-control" type="text" placeholder="نام تعمیرگاه" />
         </div>
         <div class="col-4 mb-3 pb-3">
           <input
             class="form-control"
             type="text"
+            v-model="form.phone"
             placeholder="شماره تماس تعمیرگاه"
           />
         </div>
@@ -18,6 +19,7 @@
             dir="rtl"
             class="bg-white"
             :options="provinces"
+            v-model="provincesValue"
             placeholder="استان"
           ></v-select>
         </div>
@@ -26,6 +28,7 @@
             dir="rtl"
             class="bg-white"
             :options="cities"
+            v-model="cityValue"
             placeholder="شهر"
           ></v-select>
         </div>
@@ -62,6 +65,7 @@
               v-for="(item, index) in yesOrNo"
               :key="index"
               class="form-check col-auto"
+              @click="changeItem(item, 'cooperateHistory')"
             >
               <label
                 class="form-check-label"
@@ -89,6 +93,7 @@
               v-for="(item, index) in yesOrNo"
               :key="index"
               class="form-check col-auto"
+              @click="changeItem(item, 'cooperateWilling')"              
             >
               <label
                 class="form-check-label"
@@ -116,6 +121,7 @@
               v-for="(item, index) in yesOrNo"
               :key="index"
               class="form-check col-auto"
+              @click="changeItem(item, 'orderWilling')"
             >
               <label
                 class="form-check-label"
@@ -136,7 +142,7 @@
       </div>
     </div>
   </div>
-  <button type="button" class="btn btn-primary w-50">ثبت و ادامه</button>
+  <button type="button" class="btn btn-primary w-50" @click="submitForm">ثبت و ادامه</button>
 </template>
 
 
@@ -149,9 +155,12 @@ export default {
   components: {
     vSelect,
   },
-  props: ["provinces", "cities"],
+  props: ["provinces", "cities", "data"],
   data() {
     return {
+      provincesValue: { code: 8, label: "تهران" },
+      form: this.data,
+      cityValue: null,
       sparePartType: [
         { value: 1, label: "چینی" },
         { value: 2, label: "ایرانی" },
@@ -162,6 +171,26 @@ export default {
         { id: 0, value: false, label: "ندارد" },
       ],
     };
+  },
+  methods: {
+    changeItem(item, type) {
+      switch (type) {
+        case "orderWilling":
+          this.form.orderWilling = item.id;
+          break;
+        case "cooperateWilling":
+          this.form.cooperateWiiling = item.id;
+          break;
+        case "cooperateHistory":
+          this.form.cooperateHistory = item.id;
+          break;
+      }
+    },
+    submitForm() {
+      this.form.provinces = this.provincesValue?.code;
+      this.form.city = this.cityValue?.code;
+      this.$emit("submitForm", this.form);
+    },
   },
 };
 </script>

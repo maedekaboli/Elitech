@@ -4,10 +4,20 @@
       <label class="form-label d-block text-end"> فروشگاه لوازم یدکی :</label>
       <div class="d-flex row">
         <div class="col-4 mb-3 pb-3">
-          <input class="form-control" type="text" placeholder="نام فروشگاه" />
+          <input
+            v-model="form.name"
+            class="form-control"
+            type="text"
+            placeholder="نام فروشگاه"
+          />
         </div>
         <div class="col-4 mb-3 pb-3">
-          <input class="form-control" type="text" placeholder="شماره تماس " />
+          <input
+            v-model="form.phone"
+            class="form-control"
+            type="text"
+            placeholder="شماره تماس "
+          />
         </div>
         <div class="col-4 mb-3 pb-3">
           <v-select
@@ -22,6 +32,7 @@
           <v-select
             dir="rtl"
             class="bg-white"
+            v-model="cityValue"
             :options="cities"
             placeholder="شهر"
           ></v-select>
@@ -60,6 +71,7 @@
               v-for="(item, index) in yesOrNo"
               :key="index"
               class="form-check col-auto"
+              @click="changeItem(item, 'cooperateHistory')"
             >
               <label
                 class="form-check-label"
@@ -87,6 +99,7 @@
               v-for="(item, index) in yesOrNo"
               :key="index"
               class="form-check col-auto"
+              @click="changeItem(item, 'cooperateWilling')"              
             >
               <label class="form-check-label" :for="`elitechWilling${item.id}`">
                 {{ item.label }}
@@ -111,6 +124,7 @@
               v-for="(item, index) in yesOrNo"
               :key="index"
               class="form-check col-auto"
+              @click="changeItem(item, 'orderWilling')"
             >
               <label class="form-check-label" :for="`orderhWilling${item.id}`">
                 {{ item.label }}
@@ -142,16 +156,12 @@ export default {
   components: {
     vSelect,
   },
-  props: ["provinces", "cities"],
+  props: ["provinces", "cities", "data"],
   data() {
     return {
       provincesValue: { code: 8, label: "تهران" },
-      form: {
-        name: null,
-        mobile: null,
-        province: null,
-        city: null,
-      },
+      form: this.data,
+      cityValue: null,
       sparePartType: [
         { value: 1, label: "چینی" },
         { value: 2, label: "ایرانی" },
@@ -164,8 +174,23 @@ export default {
     };
   },
   methods: {
+    changeItem(item, type) {
+      switch (type) {
+        case "orderWilling":
+          this.form.orderWilling = item.id;
+          break;
+        case "cooperateWilling":
+          this.form.cooperateWiiling = item.id;
+          break;
+          case "cooperateHistory":
+          this.form.cooperateHistory = item.id;
+          break;
+      }
+    },
     submitForm() {
-      this.$emit("submitForm", {city:this.provincesValue.code});
+      this.form.provinces = this.provincesValue?.code;
+      this.form.city = this.cityValue?.code;
+      this.$emit("submitForm", this.form);
     },
   },
 };

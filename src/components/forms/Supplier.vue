@@ -80,8 +80,8 @@ export default {
   },
   methods: {
     submitForm() {
-      this.form.provinces = this.provincesValue.code;
-      this.form.city = this.cityValue.code;
+      this.form.provinces = this.provincesValue?.code;
+      this.form.city = this.cityValue?.code;
       this.$emit("submitForm", this.form);
     },
   },

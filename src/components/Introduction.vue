@@ -1,12 +1,16 @@
 <template>
   <div class="container">
     <div class="bg-white text-end introduction">
-      <video-player
-        :src="'./images/' + 'video.mp4'"
-        :poster="'./images/' + 'intro-poster.svg'"
-        controls
-        :volume="0.6"
-      />
+      <div class="h_iframe-aparat_embed_frame">
+        <span style="display: block; padding-top: 57%"></span
+        ><iframe
+          src="https://www.aparat.com/video/video/embed/videohash/8hXcV/vt/frame"
+          allowFullScreen="true"
+          webkitallowfullscreen="true"
+          mozallowfullscreen="true"
+        ></iframe>
+      </div>
+
       <span class="title">معرفی</span>
       <div class="introduction-content">
         <p>
@@ -34,18 +38,28 @@
 
 
  <script>
-import { VideoPlayer } from "@videojs-player/vue";
-import "video.js/dist/video-js.css";
 
 export default {
-  name: "Introduction",
-  components: {
-    VideoPlayer,
-  },
+  name: "Introduction"
 };
 </script> 
 
 <style>
+.h_iframe-aparat_embed_frame {
+  position: relative;
+}
+.h_iframe-aparat_embed_frame .ratio {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.h_iframe-aparat_embed_frame iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 .video-js .vjs-modal-dialog {
   border-radius: 16px;
 }

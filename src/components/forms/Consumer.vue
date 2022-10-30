@@ -9,12 +9,19 @@
           <v-select
             dir="rtl"
             class="bg-white"
-            :options="provinces"
+            :options="cities"
+            v-model="cityValue"
             placeholder="شهر محل سکونت"
           ></v-select>
         </div>
         <div class="col-4 mb-3 pb-3">
-          <input class="form-control" type="text" placeholder="مدل خودرو" />
+          <v-select
+            dir="rtl"
+            class="bg-white"
+            v-model="selectedModel"
+            :options="carModels"
+            placeholder=" مدل خودرو "
+          ></v-select>
         </div>
         <div class="col-4 mb-3 pb-3">
           <input
@@ -41,7 +48,7 @@
             :for="`spareSupplyApproach${item.value}`"
           >
             {{ item.label }}
-            {{item.checked}}
+            {{ item.checked }}
           </label>
           <input
             class="form-check-input"
@@ -68,15 +75,12 @@ export default {
   components: {
     vSelect,
   },
-  props: ["provinces"],
+  props: ["cities", "carModels", "data"],
   data() {
     return {
-      form: {
-        city: null,
-        carModel: null,
-        kilometers: null,
-        spareSupplyApproach: [],
-      },
+      form: this.data,
+      cityValue:null,
+      selectedModel: null,
       spareSupplyApproach: [
         { value: 1, label: "اینترنتی", checked: true },
         { value: 2, label: "حضوری", checked: false },
@@ -88,20 +92,22 @@ export default {
   methods: {
     choose(val, checked) {
       console.log(val, checked);
-      
-        this.spareSupplyApproach.forEach((item) => {
-          if (val == item.value) {
-          console.log(item)
-          item.checked = !item.checked ;
-          console.log(item)
-          }
-        });
+
+      this.spareSupplyApproach.forEach((item) => {
+        if (val == item.value) {
+          console.log(item);
+          item.checked = !item.checked;
+          console.log(item);
+        }
+      });
       //   console.log(val,checked)
       // if(!this.form.spareSupplyApproach.includes(val) && true)
 
       // this.form.spareSupplyApproach.push(val)
     },
     submitForm() {
+      this.form.city = this.cityValue?.code;
+      this.form.carModel = this.selectedModel?.code;
       this.$emit("submitForm", this.form);
     },
   },
