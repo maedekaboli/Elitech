@@ -38,7 +38,7 @@ export default {
     return {
       headerItems: [
         {
-          title: "با الیتک، همواره در حرکت ",
+          title: "با الیتک، همواره به حرکت ",
           imgURL: "chad.png",
         },
       ],
