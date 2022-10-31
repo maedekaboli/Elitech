@@ -3,7 +3,7 @@
     <div class="card-body">
       <label class="form-label d-block text-end"> نمایندگی:</label>
       <div class="d-flex row">
-        <div class="col-4 mb-3 pb-3">
+        <div class="col-md-4 mb-3 pb-3">
           <input
             class="form-control"
             type="text"
@@ -11,7 +11,7 @@
             placeholder=" نام و کد نمایندگی"
           />
         </div>
-        <div class="col-8 mb-3 pb-3">
+        <div class="col-md-8 mb-3 pb-3">
           <input v-model="form.address" class="form-control mb-5" type="text" placeholder="آدرس" />
           <textarea
             placeholder="توضیحات"
@@ -21,7 +21,7 @@
             rows="4"
           ></textarea>
         </div>
-        <div class="col-4 mb-3 pb-3">
+        <div class="col-md-4 mb-3 pb-3">
           <label class="d-block text-end form-label"
             >تمایل به همکاری با الیتک :</label
           >

@@ -5,7 +5,7 @@
         تامین کننده / تولید کننده :</label
       >
       <div class="d-flex row">
-        <div class="col-4 mb-3 pb-3">
+        <div class="col-md-4 mb-3 pb-3">
           <input
             v-model="form.name"
             class="form-control"
@@ -13,7 +13,7 @@
             placeholder="نام سازمان"
           />
         </div>
-        <div class="col-4 mb-3 pb-3">
+        <div class="col-md-4 mb-3 pb-3">
           <input
             class="form-control"
             type="text"
@@ -21,7 +21,7 @@
             placeholder="شماره تماس سازمان"
           />
         </div>
-        <div class="col-4 mb-3 pb-3">
+        <div class="col-md-4 mb-3 pb-3">
           <v-select
             dir="rtl"
             class="bg-white"
@@ -30,7 +30,7 @@
             placeholder="استان"
           ></v-select>
         </div>
-        <div class="col-4 mb-3 pb-3">
+        <div class="col-md-4 mb-3 pb-3">
           <v-select
             dir="rtl"
             class="bg-white"

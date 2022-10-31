@@ -5,7 +5,7 @@
         >مصرف کننده دارای خودروی چینی :</label
       >
       <div class="d-flex row">
-        <div class="col-4 mb-3 pb-3">
+        <div class="col-md-4 mb-3 pb-3">
           <v-select
             dir="rtl"
             class="bg-white"
@@ -14,7 +14,7 @@
             placeholder="شهر محل سکونت"
           ></v-select>
         </div>
-        <div class="col-4 mb-3 pb-3">
+        <div class="col-md-4 mb-3 pb-3">
           <v-select
             dir="rtl"
             class="bg-white"
@@ -23,7 +23,7 @@
             placeholder=" مدل خودرو "
           ></v-select>
         </div>
-        <div class="col-4 mb-3 pb-3">
+        <div class="col-md-4 mb-3 pb-3">
           <input
             class="form-control"
             type="text"
@@ -35,7 +35,7 @@
       <label class="form-label d-block text-end">
         نحوه تامین لوازم یدکی :</label
       >
-      <div class="d-flex justify-content-between col-6">
+      <div class="d-flex justify-content-between col-md-6">
         <div
           dir="ltr"
           v-for="(item, index) in spareSupplyApproach"

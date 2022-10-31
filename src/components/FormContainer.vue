@@ -3,7 +3,7 @@
     <div class="card bg-light mb-3">
       <div class="card-body">
         <div class="d-flex row">
-          <div class="col-4 mb-3 pb-3">
+          <div class="col-lg-4 col-md-6 mb-3 pb-3">
             <v-select
               dir="rtl"
               v-model="selectedAuthor"
@@ -13,7 +13,7 @@
             ></v-select>
             <div class="form-text text-end">پر کردن این قسمت اجباری می باشد</div>
           </div>
-          <div class="col-4 mb-3 pb-3">
+          <div class="col-lg-4  col-md-6 mb-3 pb-3">
             <input
               class="form-control"
               type="text"
@@ -22,7 +22,7 @@
             />
             <div class="form-text text-end">پر کردن این قسمت اجباری می باشد</div>
           </div>
-          <div class="col-4 mb-3 pb-3">
+          <div class="col-lg-4  col-md-6 mb-3 pb-3">
             <input
               v-model="form.mobile"
               class="form-control"
