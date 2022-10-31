@@ -55,7 +55,8 @@
               <input
                 class="form-check-input"
                 type="checkbox"
-                :value="item.value"
+                :value="item"
+                v-model="checkedProducts"
                 :id="`sparePartType${item.value}`"
               />
             </div>
@@ -167,6 +168,7 @@ export default {
         { value: 2, label: "ایرانی" },
         { value: 3, label: "سایر" },
       ],
+      checkedProducts: [],
       yesOrNo: [
         { id: 1, value: false, label: "دارد" },
         { id: 0, value: false, label: "ندارد" },
@@ -188,6 +190,7 @@ export default {
       }
     },
     submitForm() {
+      this.checkedProducts.forEach(i=>this.form.partType.push(i.value));
       this.form.provinces = this.provincesValue?.code;
       this.form.city = this.cityValue?.code;
       this.$emit("submitForm", this.form);

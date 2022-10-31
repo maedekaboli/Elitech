@@ -11,6 +11,7 @@
               :options="authors"
               placeholder="نام کارشناس"
             ></v-select>
+            <div class="form-text text-end">پر کردن این قسمت اجباری می باشد</div>
           </div>
           <div class="col-4 mb-3 pb-3">
             <input
@@ -19,6 +20,7 @@
               v-model="form.name"
               placeholder="نام بازدید کننده"
             />
+            <div class="form-text text-end">پر کردن این قسمت اجباری می باشد</div>
           </div>
           <div class="col-4 mb-3 pb-3">
             <input
@@ -27,6 +29,7 @@
               type="text"
               placeholder="شماره تماس"
             />
+            <div class="form-text text-end">پر کردن این قسمت اجباری می باشد</div>
           </div>
         </div>
         <label class="form-label d-block text-end"> نوع بازدید کننده :</label>
@@ -165,10 +168,9 @@ export default {
           provience: null,
           carModel: null,
           kilometers: null,
-          supplyApproach: null,
+          supplyApproach: [],
           name: null,
           phone: null,
-          sparePart: null,
           cooperateHistory: null,
           cooperateWiiling: null,
           orderWilling: null,
@@ -188,7 +190,10 @@ export default {
       api.post("form", this.form).then(() => {
       this.changeActivetab({ id: 1, value: "normal", label: "عادی" })
       this.form.name=null;
-      this.form.mobile=null
+      this.form.mobile=null;
+      this.form.data.partType=[]
+      this.form.data.supplyApproach=[]
+
       }
       );
     },
@@ -199,10 +204,9 @@ export default {
         provience: null,
         carModel: null,
         kilometers: null,
-        supplyApproach: null,
+        supplyApproach: [],
         name: null,
         phone: null,
-        sparePart: null,
         cooperateHistory: null,
         cooperateWiiling: null,
         orderWilling: null,

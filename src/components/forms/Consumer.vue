@@ -41,20 +41,18 @@
           v-for="(item, index) in spareSupplyApproach"
           :key="index"
           class="form-check col-auto"
-          @click="choose(item.value, item.checked)"
         >
           <label
             class="form-check-label"
             :for="`spareSupplyApproach${item.value}`"
           >
             {{ item.label }}
-            {{ item.checked }}
           </label>
           <input
             class="form-check-input"
             type="checkbox"
-            :value="item.value"
-            :checked="item.checked"
+            :value="item"
+            v-model="checkedProducts"
             :id="`spareSupplyApproach${item.value}`"
           />
         </div>
@@ -81,8 +79,9 @@ export default {
       form: this.data,
       cityValue:null,
       selectedModel: null,
+      checkedProducts: [],
       spareSupplyApproach: [
-        { value: 1, label: "اینترنتی", checked: true },
+        { value: 1, label: "اینترنتی", checked: false },
         { value: 2, label: "حضوری", checked: false },
         { value: 3, label: "شرکتی", checked: false },
         { value: 4, label: "مکانیکی", checked: false },
@@ -90,22 +89,8 @@ export default {
     };
   },
   methods: {
-    choose(val, checked) {
-      console.log(val, checked);
-
-      this.spareSupplyApproach.forEach((item) => {
-        if (val == item.value) {
-          console.log(item);
-          item.checked = !item.checked;
-          console.log(item);
-        }
-      });
-      //   console.log(val,checked)
-      // if(!this.form.spareSupplyApproach.includes(val) && true)
-
-      // this.form.spareSupplyApproach.push(val)
-    },
     submitForm() {
+      this.checkedProducts.forEach(i=>this.form.supplyApproach.push(i.value));
       this.form.city = this.cityValue?.code;
       this.form.carModel = this.selectedModel?.code;
       this.$emit("submitForm", this.form);
