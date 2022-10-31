@@ -40,7 +40,6 @@
           />
           <div class="carousel-caption">
             <h2>{{ item.title }}</h2>
-            <p>{{ item.content }}</p>
           </div>
         </div>
       </div>

@@ -128,6 +128,7 @@ import RepairShop from "./forms/RepairShop.vue";
 import Supplier from "./forms/Supplier.vue";
 import Representation from "./forms/Representation.vue";
 import api from "../api";
+import { useToast } from "vue-toastification";
 
 export default {
   name: "FormContainer",
@@ -142,6 +143,7 @@ export default {
   },
   data() {
     return {
+      toast: useToast(),
       selectedAuthor: null,
       active: { id: 1, value: "normal", label: "عادی" },
       authors: [],
@@ -182,20 +184,30 @@ export default {
   },
   methods: {
     submitForm(info) {
+      if(!this.form.name || !this.selectedAuthor || !this.form.mobile){
+        this.toast.error('اطلاعات بالای صفحه را درست وارد کنید', {
+        timeout: 5000
+      })
+      }
       let data = { ...this.form.data, ...info };
       this.form.data = data;
       this.form.author = this.selectedAuthor.label;
       this.form.type = this.active.value;
-      console.log("form", this.form);
-      api.post("form", this.form).then(() => {
+      api.post("form", this.form).then(res => {
       this.changeActivetab({ id: 1, value: "normal", label: "عادی" })
       this.form.name=null;
       this.form.mobile=null;
       this.form.data.partType=[]
       this.form.data.supplyApproach=[]
-
+      this.toast.success(res.data.message, {
+        timeout: 5000
+      });
       }
-      );
+      ).catch(res=>{
+      this.toast.error(res.data.message, {
+        timeout: 5000
+      })}
+      )
     },
     changeActivetab(item) {
       this.form.data = {

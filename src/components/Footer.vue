@@ -92,6 +92,7 @@
 <script>
 import api from "../api";
 import vSelect from "vue-select";
+import { useToast } from "vue-toastification";
 
 export default {
   name: "Footer",
@@ -100,6 +101,7 @@ export default {
   },
   data() {
     return {
+      toast: useToast(),
       contactInfo: [
         {
           icon: "location.svg",
@@ -126,19 +128,25 @@ export default {
         form: "cooperation",
         type: null,
         author: null,
-        data: {city:null},
+        data: { city: null },
       },
     };
   },
   methods: {
     submitForm() {
-      this.form.data.city=this.selectedProvience.code;
-      api.post("form", this.form).then(() => {
-      this.form.name=null;
-      this.form.mobile=null;
-
-      }
-      );
+      this.form.data.city = this.selectedProvience?.code;
+      api.post("form", this.form).then(res => {
+        
+        this.form.name = null;
+        this.form.mobile = null;
+        this.toast.success(res.data.message, {
+        timeout: 5000
+      });
+      }).catch(res=>{
+      this.toast.error(res.data.message, {
+        timeout: 5000
+      });}
+      )
     },
   },
   mounted() {
