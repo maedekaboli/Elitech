@@ -11,25 +11,31 @@
               :options="authors"
               placeholder="نام کارشناس"
             ></v-select>
-            <div class="form-text text-end">پر کردن این قسمت اجباری می باشد</div>
+            <div class="form-text text-end">
+              پر کردن این قسمت اجباری می باشد
+            </div>
           </div>
-          <div class="col-lg-4  col-md-6 mb-3 pb-3">
+          <div class="col-lg-4 col-md-6 mb-3 pb-3">
             <input
               class="form-control"
               type="text"
               v-model="form.name"
               placeholder="نام بازدید کننده"
             />
-            <div class="form-text text-end">پر کردن این قسمت اجباری می باشد</div>
+            <div class="form-text text-end">
+              پر کردن این قسمت اجباری می باشد
+            </div>
           </div>
-          <div class="col-lg-4  col-md-6 mb-3 pb-3">
+          <div class="col-lg-4 col-md-6 mb-3 pb-3">
             <input
               v-model="form.mobile"
               class="form-control"
               type="text"
               placeholder="شماره تماس"
             />
-            <div class="form-text text-end">پر کردن این قسمت اجباری می باشد</div>
+            <div class="form-text text-end">
+              پر کردن این قسمت اجباری می باشد
+            </div>
           </div>
         </div>
         <label class="form-label d-block text-end"> نوع بازدید کننده :</label>
@@ -184,30 +190,33 @@ export default {
   },
   methods: {
     submitForm(info) {
-      if(!this.form.name || !this.selectedAuthor || !this.form.mobile){
-        this.toast.error('اطلاعات بالای صفحه را درست وارد کنید', {
-        timeout: 5000
-      })
+      if (!this.form.name || !this.selectedAuthor || !this.form.mobile) {
+        this.toast.error("اطلاعات بالای صفحه را درست وارد کنید", {
+          timeout: 5000,
+        });
+      } else {
+        let data = { ...this.form.data, ...info };
+        this.form.data = data;
+        this.form.author = this.selectedAuthor.label;
+        this.form.type = this.active.value;
+        api
+          .post("form", this.form)
+          .then((res) => {
+            this.changeActivetab({ id: 1, value: "normal", label: "عادی" });
+            this.form.name = null;
+            this.form.mobile = null;
+            this.form.data.partType.length = 0;
+            this.form.data.supplyApproach.length = 0;
+            this.toast.success(res.data.message, {
+              timeout: 5000,
+            });
+          })
+          .catch((res) => {
+            this.toast.error(res.data.message, {
+              timeout: 5000,
+            });
+          });
       }
-      let data = { ...this.form.data, ...info };
-      this.form.data = data;
-      this.form.author = this.selectedAuthor.label;
-      this.form.type = this.active.value;
-      api.post("form", this.form).then(res => {
-      this.changeActivetab({ id: 1, value: "normal", label: "عادی" })
-      this.form.name=null;
-      this.form.mobile=null;
-      this.form.data.partType=[]
-      this.form.data.supplyApproach=[]
-      this.toast.success(res.data.message, {
-        timeout: 5000
-      });
-      }
-      ).catch(res=>{
-      this.toast.error(res.data.message, {
-        timeout: 5000
-      })}
-      )
     },
     changeActivetab(item) {
       this.form.data = {
@@ -225,6 +234,9 @@ export default {
         partType: [],
         address: null,
       };
+
+      this.form.data.partType.length = 0;
+      this.form.data.supplyApproach.length = 0;
       this.active = item;
     },
   },
