@@ -80,11 +80,13 @@
       <div class="tab-pane fade show active">
         <RegularVisitor
           v-if="active.id == 1"
+          :loading="loading"
           :comment="form.data.comment"
           @submitForm="submitForm"
         ></RegularVisitor>
 
         <Consumer
+          :loading="loading"
           v-if="active.id == 2"
           :cities="cities"
           :carModels="carModels"
@@ -94,6 +96,7 @@
 
         <SparePartStore
           v-if="active.id == 3"
+          :loading="loading"
           :provinces="provinces"
           :cities="cities"
           :data="form.data"
@@ -102,6 +105,7 @@
 
         <RepairShop
           v-if="active.id == 4"
+          :loading="loading"
           :provinces="provinces"
           :cities="cities"
           :data="form.data"
@@ -110,6 +114,7 @@
 
         <Supplier
           v-if="active.id == 5"
+          :loading="loading"
           :provinces="provinces"
           :cities="cities"
           :data="form.data"
@@ -118,6 +123,7 @@
 
         <Representation
           v-if="active.id == 6"
+          :loading="loading"
           :data="form.data"
           @submitForm="submitForm"
         ></Representation>
@@ -153,6 +159,7 @@ export default {
   },
   data() {
     return {
+      loading: false,
       toast: useToast(),
       selectedAuthor: null,
       active: { id: 1, value: "normal", label: "عادی" },
@@ -195,10 +202,9 @@ export default {
   methods: {
     submitForm(info) {
       if (!this.form.name || !this.selectedAuthor || !this.form.mobile) {
-        this.toast.error("اطلاعات بالای صفحه را درست وارد کنید", {
-          timeout: 5000,
-        });
+        this.toast.error("اطلاعات بالای صفحه را درست وارد کنید");
       } else {
+        this.loading=true;
         let data = { ...this.form.data, ...info };
         this.form.data = data;
         this.form.author = this.selectedAuthor.label;
@@ -206,19 +212,17 @@ export default {
         api
           .post("form", this.form)
           .then((res) => {
+            this.loading=false;
             this.changeActivetab({ id: 1, value: "normal", label: "عادی" });
             this.form.name = null;
             this.form.mobile = null;
             this.form.data.partType.length = 0;
             this.form.data.supplyApproach.length = 0;
-            this.toast.success(res.data.message, {
-              timeout: 5000,
-            });
+            this.toast.success(res.data.message);
           })
           .catch((res) => {
-            this.toast.error(res.data.message, {
-              timeout: 5000,
-            });
+            this.loading=false;
+            this.toast.error(res.data.message);
           });
       }
     },

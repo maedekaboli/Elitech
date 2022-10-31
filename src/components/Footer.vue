@@ -71,10 +71,25 @@
               ></v-select>
             </div>
             <button
+            :disabled="loading ? true : false"
               type="button"
-              class="btn btn-warning submit-cooperate-btn"
+              class="
+                btn btn-warning
+                submit-cooperate-btn
+                d-inline-flex
+                align-items-center
+                justify-content-center
+                gap-2
+              "
               @click="submitForm"
             >
+              <div
+                v-if="loading"
+                class="spinner-border text-dark spinner-border-sm"
+                role="status"
+              >
+                <span class="visually-hidden">Loading...</span>
+              </div>
               ثبت درخواست
             </button>
           </form>
@@ -101,6 +116,7 @@ export default {
   },
   data() {
     return {
+      loading: false,
       toast: useToast(),
       contactInfo: [
         {
@@ -115,10 +131,22 @@ export default {
         { icon: "sms.svg", info: "sales@elitechpart.com" },
       ],
       socials: [
-        { link: "https://www.instagram.com/elitechpartcom", imgURL: "facebook-black.svg" },
-        { link: "https://www.instagram.com/elitechpartcom", imgURL: "whatsapp-black.svg" },
-        { link: "https://www.instagram.com/elitechpartcom", imgURL: "twitter-black.svg" },
-        { link: "https://www.instagram.com/elitechpartcom", imgURL: "linkedin-black.svg" },
+        {
+          link: "https://www.instagram.com/elitechpartcom",
+          imgURL: "facebook-black.svg",
+        },
+        {
+          link: "https://www.instagram.com/elitechpartcom",
+          imgURL: "whatsapp-black.svg",
+        },
+        {
+          link: "https://www.instagram.com/elitechpartcom",
+          imgURL: "twitter-black.svg",
+        },
+        {
+          link: "https://www.instagram.com/elitechpartcom",
+          imgURL: "linkedin-black.svg",
+        },
       ],
       provinces: [],
       selectedProvience: null,
@@ -134,19 +162,20 @@ export default {
   },
   methods: {
     submitForm() {
+      this.loading = true;
       this.form.data.city = this.selectedProvience?.code;
-      api.post("form", this.form).then(res => {
-        
-        this.form.name = null;
-        this.form.mobile = null;
-        this.toast.success(res.data.message, {
-        timeout: 5000
-      });
-      }).catch(res=>{
-      this.toast.error(res.data.message, {
-        timeout: 5000
-      });}
-      )
+      api
+        .post("form", this.form)
+        .then((res) => {
+          this.loading = false;
+          this.form.name = null;
+          this.form.mobile = null;
+          this.toast.success(res.data.message);
+        })
+        .catch((res) => {
+          this.loading = false;
+          this.toast.error(res.data.message);
+        });
     },
   },
   mounted() {

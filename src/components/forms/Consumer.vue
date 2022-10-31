@@ -59,7 +59,26 @@
       </div>
     </div>
   </div>
-  <button type="button" class="btn btn-primary w-50" @click="submitForm">
+  <button
+    :disabled="loading ? true : false"
+    type="button"
+    class="
+      btn btn-primary
+      w-50
+      d-inline-flex
+      align-items-center
+      justify-content-center
+      gap-2
+    "
+    @click="submitForm"
+  >
+    <div
+      v-if="loading"
+      class="spinner-border text-light spinner-border-sm"
+      role="status"
+    >
+      <span class="visually-hidden">Loading...</span>
+    </div>
     ثبت و ادامه
   </button>
 </template>
@@ -73,11 +92,11 @@ export default {
   components: {
     vSelect,
   },
-  props: ["cities", "carModels", "data"],
+  props: ["cities", "carModels", "data", "loading"],
   data() {
     return {
       form: this.data,
-      cityValue:null,
+      cityValue: null,
       selectedModel: null,
       checkedProducts: [],
       spareSupplyApproach: [
@@ -90,7 +109,9 @@ export default {
   },
   methods: {
     submitForm() {
-      this.checkedProducts.forEach(i=>this.form.supplyApproach.push(i.value));
+      this.checkedProducts.forEach((i) =>
+        this.form.supplyApproach.push(i.value)
+      );
       this.form.city = this.cityValue?.code;
       this.form.carModel = this.selectedModel?.code;
       this.$emit("submitForm", this.form);

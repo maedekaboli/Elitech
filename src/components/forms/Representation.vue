@@ -12,7 +12,12 @@
           />
         </div>
         <div class="col-md-8 mb-3 pb-3">
-          <input v-model="form.address" class="form-control mb-5" type="text" placeholder="آدرس" />
+          <input
+            v-model="form.address"
+            class="form-control mb-5"
+            type="text"
+            placeholder="آدرس"
+          />
           <textarea
             placeholder="توضیحات"
             v-model="form.comment"
@@ -49,15 +54,35 @@
       </div>
     </div>
   </div>
-  <button type="button" class="btn btn-primary w-50" @click="submitForm">ثبت و ادامه</button>
+  <button
+    :disabled="loading ? true : false"
+    type="button"
+    class="
+      btn btn-primary
+      w-50
+      d-inline-flex
+      align-items-center
+      justify-content-center
+      gap-2
+    "
+    @click="submitForm"
+  >
+    <div
+      v-if="loading"
+      class="spinner-border text-light spinner-border-sm"
+      role="status"
+    >
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    ثبت و ادامه
+  </button>
 </template>
 
 
 <script>
 export default {
   name: "Representation",
-  props: ["data"],
-
+  props: ["data", "loading"],
   data() {
     return {
       form: this.data,
@@ -68,11 +93,11 @@ export default {
     };
   },
   methods: {
-    changeItem(item){
-      this.form.cooperateWiiling=item.id
+    changeItem(item) {
+      this.form.cooperateWiiling = item.id;
     },
     submitForm() {
-      this.$emit("submitForm",this.form);
+      this.$emit("submitForm", this.form);
     },
   },
 };

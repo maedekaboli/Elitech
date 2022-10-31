@@ -15,7 +15,26 @@
       </div>
     </div>
   </div>
-  <button type="button" class="btn btn-primary w-50" @click="submitForm">
+  <button
+    :disabled="loading ? true : false"
+    type="button"
+    class="
+      btn btn-primary
+      w-50
+      d-inline-flex
+      align-items-center
+      justify-content-center
+      gap-2
+    "
+    @click="submitForm"
+  >
+    <div
+      v-if="loading"
+      class="spinner-border text-light spinner-border-sm"
+      role="status"
+    >
+      <span class="visually-hidden">Loading...</span>
+    </div>
     ثبت و ادامه
   </button>
 </template>
@@ -24,7 +43,7 @@
 <script>
 export default {
   name: "RegularVisitor",
-  props:['comment'],
+  props: ["comment", "loading"],
   data() {
     return {
       form: {
@@ -34,7 +53,7 @@ export default {
   },
   methods: {
     submitForm() {
-      this.$emit("submitForm",this.form);
+      this.$emit("submitForm", this.form);
     },
   },
 };
