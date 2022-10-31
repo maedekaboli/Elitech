@@ -1,5 +1,7 @@
 <template>
   <div class="container my-5">
+    <div class="d-flex justify-content-center"><HeaderBanner /></div>
+    <h2>فرم جمع آوری اطلاات مشتریان / مشتریان بالقوه در نمایشگاه</h2>
     <div class="card bg-light mb-3">
       <div class="card-body">
         <div class="d-flex row">
@@ -135,11 +137,13 @@ import Supplier from "./forms/Supplier.vue";
 import Representation from "./forms/Representation.vue";
 import api from "../api";
 import { useToast } from "vue-toastification";
+import HeaderBanner from "./HeaderBanner.vue";
 
 export default {
   name: "FormContainer",
   components: {
     vSelect,
+    HeaderBanner,
     RegularVisitor,
     RepairShop,
     Consumer,
@@ -258,3 +262,24 @@ export default {
   },
 };
 </script>
+
+
+<style scoped>
+.card {
+  margin-top: 50px;
+}
+h2 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 37px;
+  color: #626262;
+  margin-top: 120px;
+}
+@media only screen and (max-width: 426px) {
+  .card {
+  margin-top: 30px;
+}
+  h2{  margin-top: 60px;
+  font-size:18px}
+}
+</style>
