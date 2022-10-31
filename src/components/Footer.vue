@@ -26,7 +26,7 @@
               :key="index"
               class="list-inline-item m-0"
             >
-              <a :href="item.link" class="social-items">
+              <a target="_blank" :href="item.link" class="social-items">
                 <img :src="'./images/' + item.imgURL" />
               </a>
             </li>
@@ -115,10 +115,10 @@ export default {
         { icon: "sms.svg", info: "sales@elitechpart.com" },
       ],
       socials: [
-        { link: "", imgURL: "facebook-black.svg" },
-        { link: "", imgURL: "whatsapp-black.svg" },
-        { link: "", imgURL: "twitter-black.svg" },
-        { link: "", imgURL: "linkedin-black.svg" },
+        { link: "https://www.instagram.com/elitechpartcom", imgURL: "facebook-black.svg" },
+        { link: "https://www.instagram.com/elitechpartcom", imgURL: "whatsapp-black.svg" },
+        { link: "https://www.instagram.com/elitechpartcom", imgURL: "twitter-black.svg" },
+        { link: "https://www.instagram.com/elitechpartcom", imgURL: "linkedin-black.svg" },
       ],
       provinces: [],
       selectedProvience: null,
