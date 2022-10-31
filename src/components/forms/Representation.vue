@@ -5,28 +5,11 @@
       <div class="d-flex row">
         <div class="col-md-4 mb-3 pb-3">
           <input
-            class="form-control"
+            class="form-control mb-4"
             type="text"
             v-model="form.name"
             placeholder=" نام و کد نمایندگی"
           />
-        </div>
-        <div class="col-md-8 mb-3 pb-3">
-          <input
-            v-model="form.address"
-            class="form-control mb-5"
-            type="text"
-            placeholder="آدرس"
-          />
-          <textarea
-            placeholder="توضیحات"
-            v-model="form.comment"
-            class="form-control"
-            id="visitorComment"
-            rows="4"
-          ></textarea>
-        </div>
-        <div class="col-md-4 mb-3 pb-3">
           <label class="d-block text-end form-label"
             >تمایل به همکاری با الیتک :</label
           >
@@ -50,6 +33,21 @@
               />
             </div>
           </div>
+        </div>
+        <div class="col-md-8 mb-3 pb-3">
+          <input
+            v-model="form.address"
+            class="form-control mb-4"
+            type="text"
+            placeholder="آدرس"
+          />
+          <textarea
+            placeholder="توضیحات"
+            v-model="form.comment"
+            class="form-control"
+            id="visitorComment"
+            rows="4"
+          ></textarea>
         </div>
       </div>
     </div>
