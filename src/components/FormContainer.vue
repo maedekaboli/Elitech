@@ -34,7 +34,7 @@
         </div>
         <label class="form-label d-block text-end"> نوع بازدید کننده :</label>
         <div class="d-flex justify-content-between">
-          <ul class="nav nav-tabs border-0" id="myTab" role="tablist">
+          <ul class="nav nav-tabs border-0 p-0" id="myTab" role="tablist">
             <li
               v-for="(item, index) in visitorTypes"
               :key="index"

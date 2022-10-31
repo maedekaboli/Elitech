@@ -66,7 +66,7 @@
           <label class="d-block text-end form-label"
             >سابقه کاری با الیتک :</label
           >
-          <div class="d-flex justify-content-start">
+          <div class="d-flex justify-content-start gap">
             <div
               style="direction: ltr"
               v-for="(item, index) in yesOrNo"
@@ -94,13 +94,13 @@
           <label class="d-block text-end form-label"
             >تمایل به همکاری با الیتک :</label
           >
-          <div class="d-flex justify-content-start">
+          <div class="d-flex justify-content-start gap">
             <div
               style="direction: ltr"
               v-for="(item, index) in yesOrNo"
               :key="index"
               class="form-check col-auto"
-              @click="changeItem(item, 'cooperateWilling')"              
+              @click="changeItem(item, 'cooperateWilling')"
             >
               <label class="form-check-label" :for="`elitechWilling${item.id}`">
                 {{ item.label }}
@@ -119,7 +119,7 @@
           <label class="d-block text-end form-label"
             >تمایل به سفارش گذاری اینترنتی :</label
           >
-          <div class="d-flex justify-content-start">
+          <div class="d-flex justify-content-start gap">
             <div
               style="direction: ltr"
               v-for="(item, index) in yesOrNo"
@@ -184,13 +184,13 @@ export default {
         case "cooperateWilling":
           this.form.cooperateWiiling = item.id;
           break;
-          case "cooperateHistory":
+        case "cooperateHistory":
           this.form.cooperateHistory = item.id;
           break;
       }
     },
     submitForm() {
-      this.checkedProducts.forEach(i=>this.form.partType.push(i.value));
+      this.checkedProducts.forEach((i) => this.form.partType.push(i.value));
       this.form.provinces = this.provincesValue?.code;
       this.form.city = this.cityValue?.code;
       this.$emit("submitForm", this.form);
@@ -198,3 +198,10 @@ export default {
   },
 };
 </script>
+
+
+<style scoped>
+.gap {
+  gap: 35px;
+}
+</style>

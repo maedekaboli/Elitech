@@ -35,7 +35,7 @@
       <label class="form-label d-block text-end">
         نحوه تامین لوازم یدکی :</label
       >
-      <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between col-6">
         <div
           dir="ltr"
           v-for="(item, index) in spareSupplyApproach"

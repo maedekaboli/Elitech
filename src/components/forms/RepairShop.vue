@@ -65,7 +65,7 @@
           <label class="d-block text-end form-label"
             >سابقه کاری با الیتک :</label
           >
-          <div class="d-flex justify-content-start">
+          <div class="d-flex justify-content-start gap">
             <div
               style="direction: ltr"
               v-for="(item, index) in yesOrNo"
@@ -93,7 +93,7 @@
           <label class="d-block text-end form-label"
             >تمایل به همکاری با الیتک :</label
           >
-          <div class="d-flex justify-content-start">
+          <div class="d-flex justify-content-start gap">
             <div
               style="direction: ltr"
               v-for="(item, index) in yesOrNo"
@@ -121,7 +121,7 @@
           <label class="d-block text-end form-label"
             >تمایل به سفارش گذاری اینترنتی :</label
           >
-          <div class="d-flex justify-content-start">
+          <div class="d-flex justify-content-start gap">
             <div
               style="direction: ltr"
               v-for="(item, index) in yesOrNo"
@@ -204,3 +204,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.gap {
+  gap: 35px;
+}
+</style>

@@ -9,13 +9,13 @@
     aria-labelledby="exampleModalLabel"
     aria-hidden="false"
   >
-    <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-dialog bg-white modal-lg modal-dialog-centered">
       <div class="modal-content">
         <div class="text-start">
           <button
             @click="closeModal()"
             type="button"
-            class="btn-close"
+            class="btn-close m-3"
             data-bs-dismiss="modal"
             aria-label="Close"
           ></button>
@@ -80,7 +80,7 @@ export default defineComponent({
 }
 .modal {
   background: #231f207a;
-}
+}.modal-dialog{border-radius: 16px;}
 .btn-close {
   margin-bottom: 27px;
   border: 1.5px solid #000;

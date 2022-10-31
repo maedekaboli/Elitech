@@ -47,6 +47,7 @@
                 type="text"
                 class="form-control"
                 id="fullName"
+                v-model="form.name"
                 aria-describedby="emailHelp"
                 placeholder="نام نام خانوادگی"
               />
@@ -56,18 +57,24 @@
                 type="text"
                 class="form-control"
                 id="phone"
+                v-model="form.mobile"
                 placeholder="شماره موبایل"
               />
             </div>
             <div class="mb-3">
-              <select class="form-select" aria-label="Default select example">
-                <option selected>انتخاب شهر</option>
-                <option value="1">تهران</option>
-                <option value="2">البرز</option>
-                <option value="3">شیراز</option>
-              </select>
+              <v-select
+                dir="rtl"
+                class="bg-white"
+                v-model="selectedProvience"
+                :options="provinces"
+                placeholder="شهر"
+              ></v-select>
             </div>
-            <button type="submit" class="btn btn-warning submit-cooperate-btn">
+            <button
+              type="button"
+              class="btn btn-warning submit-cooperate-btn"
+              @click="submitForm"
+            >
               ثبت درخواست
             </button>
           </form>
@@ -83,8 +90,14 @@
 </template>
 
 <script>
+import api from "../api";
+import vSelect from "vue-select";
+
 export default {
   name: "Footer",
+  components: {
+    vSelect,
+  },
   data() {
     return {
       contactInfo: [
@@ -105,7 +118,35 @@ export default {
         { link: "", imgURL: "twitter-black.svg" },
         { link: "", imgURL: "linkedin-black.svg" },
       ],
+      provinces: [],
+      selectedProvience: null,
+      form: {
+        name: null,
+        mobile: null,
+        form: "cooperation",
+        type: null,
+        author: null,
+        data: {city:null},
+      },
     };
+  },
+  methods: {
+    submitForm() {
+      this.form.data.city=this.selectedProvience.code;
+      api.post("form", this.form).then(() => {
+      this.form.name=null;
+      this.form.mobile=null;
+
+      }
+      );
+    },
+  },
+  mounted() {
+    api.get("general").then((res) => {
+      res?.data?.data?.provinces.forEach((item) =>
+        this.provinces.push({ label: item.name, code: item.id })
+      );
+    });
   },
 };
 </script>
