@@ -102,7 +102,28 @@
     font-display: swap;
 }
 
-body{
+body {
     font-family: 'Yekan Bakh' !important;
 }
 
+
+
+.form-check .form-check-input {
+    float: unset;
+    margin-left: 5px;
+}
+
+.vs__search,
+.vs__search:focus {
+    padding: 1.8px !important;
+}
+
+.vs__dropdown-toggle {
+    border-color: #ced4da !important;
+}
+
+.vs__dropdown-toggle,
+.v-select {
+    border-radius: 0.375rem !important;
+    ;
+}

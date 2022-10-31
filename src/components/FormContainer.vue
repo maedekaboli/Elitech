@@ -277,9 +277,11 @@ h2 {
 }
 @media only screen and (max-width: 426px) {
   .card {
-  margin-top: 30px;
-}
-  h2{  margin-top: 60px;
-  font-size:18px}
+    margin-top: 30px;
+  }
+  h2 {
+    margin-top: 60px;
+    font-size: 18px;
+  }
 }
 </style>
