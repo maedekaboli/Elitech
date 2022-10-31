@@ -146,7 +146,7 @@ export default {
     height: 16px;
   }
   .carousel-caption {
-    bottom: 0;
+    bottom: 60px;
   }
   .carousel-caption h2 {
     font-size: 24px;

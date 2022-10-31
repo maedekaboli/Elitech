@@ -51,7 +51,7 @@ export default {
 .h_iframe-aparat_embed_frame .ratio {
   display: block;
   width: 100%;
-  height: auto;
+  height: 417px;
 }
 .h_iframe-aparat_embed_frame iframe {
   position: absolute;

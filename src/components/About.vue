@@ -8,11 +8,11 @@
           v-for="(item, index) in products"
           :key="index"
         >
-          <img src="../assets/images/tick-square.svg" alt="tick" />
+          <img class="tick" src="../assets/images/tick-square.svg" alt="tick" />
           <span class="card-text"> {{ item }} </span>
         </div>
       </div>
-      <div class="card">
+      <div class="card mt-4">
         <div
           class="card-header d-flex justify-content-between align-items-center"
         >
@@ -87,7 +87,7 @@ export default {
   font-size: 16px;
   line-height: 240%;
 }
-.card-body img {
+.tick {
   width: 20px;
   height: 20px;
   top: 6px;
@@ -106,6 +106,7 @@ export default {
   line-height: 37px;
 }
 @media only screen and (max-width: 426px) {
+  .products{display: unset;}
   .about {
     padding: 24px 16px 36px 16px;
   }
@@ -118,6 +119,7 @@ export default {
   .card-body {
     grid-template-columns: unset;
     gap: 12px;
+    font-size: 14px !important;
     padding: 18px 15px 21px 12px;
   }
   .card-text {
