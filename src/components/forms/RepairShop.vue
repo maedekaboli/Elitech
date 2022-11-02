@@ -145,6 +145,14 @@
             </div>
           </div>
         </div>
+        <div class="col-12">
+        <textarea
+          placeholder="توضیحات"
+          class="form-control"
+          rows="7"
+          v-model="form.comment"
+        ></textarea>
+      </div>
       </div>
     </div>
   </div>

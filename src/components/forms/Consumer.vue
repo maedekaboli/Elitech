@@ -32,10 +32,10 @@
           />
         </div>
       </div>
-      <label class="form-label d-block text-end">
+           <label class="form-label d-block text-end">
         نحوه تامین لوازم یدکی :</label
       >
-      <div class="d-flex justify-content-between col-md-6">
+      <div class="d-flex justify-content-between col-md-7 flex-wrap mb-4">
         <div
           dir="ltr"
           v-for="(item, index) in spareSupplyApproach"
@@ -56,6 +56,14 @@
             :id="`spareSupplyApproach${item.value}`"
           />
         </div>
+      </div>
+      <div class="col-12">
+        <textarea
+          placeholder="توضیحات"
+          class="form-control"
+          rows="7"
+          v-model="form.comment"
+        ></textarea>
       </div>
     </div>
   </div>
